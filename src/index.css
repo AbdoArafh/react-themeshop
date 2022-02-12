@@ -1,0 +1,68 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+    @apply text-gray-500
+}
+
+.container  {
+    @apply max-w-[1024px] w-[100%];
+}
+
+.orbits {
+    @apply relative;
+}
+
+.center {
+    @apply absolute inset-0 flex justify-center items-center;
+}
+
+/* .orbit {
+    @apply rounded-full border-gray-400 border-2 border-dashed aspect-square absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] rotate-45 transition-all hover:rotate-180;
+} */
+
+.orbit {
+    @apply rounded-full border-gray-400 border-2 border-dashed aspect-square relative animate-spin;
+}
+
+.orbit-sm {
+    @apply h-[30%];
+    animation-duration: 3s;
+}
+
+.orbit-md {
+    @apply h-[70%];
+    animation-duration: 4s;
+}
+
+.orbit-lg {
+    @apply h-[110%];
+    animation-duration: 5s;
+}
+
+.icon {
+    @apply w-3 aspect-square bg-gray-900 absolute
+}
+
+.top {
+    @apply top-0 left-[50%] -translate-x-[50%] -translate-y-[50%];
+}
+
+.bottom {
+    @apply bottom-0 left-[50%] -translate-x-[50%] translate-y-[50%];
+}
+
+.left {
+    @apply top-[50%] left-0 -translate-x-[50%] -translate-y-[50%];
+}
+
+.right {
+    @apply top-[50%] right-0 translate-x-[50%] -translate-y-[50%];
+}
+
+.scale-300 {
+    transform: scale(3);
+    -o-transform: scale(3);
+}
