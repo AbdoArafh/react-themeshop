@@ -1,4 +1,5 @@
 import ReactIcon from '../components/icons/reactIcon';
+import { Eye, MessageSquare } from "react-feather";
 
 class Vector2D {
     constructor(x=0, y=0) {
@@ -286,6 +287,49 @@ function Rate() {
     )
 }
 
+function ArticleComponent() {
+    return (
+        <a href="#" className="article group flex flex-col gap-5">
+            <img src="https://via.placeholder.com/300.png" alt="article image" />
+            <div className="info1 uppercase text-gray-500 flex flex-row items-center gap-3 text-sm">
+                <span className="tag">
+                    tips
+                </span>
+                <span className="sep w-1 aspect-square bg-gray-500 rounded-full"></span>
+                <span className="date">
+                    Feb 12, 2022
+                </span>
+            </div>
+            <div className="title font-semibold text-2xl group-hover:text-orange-500 transition-color">
+                How To optimize cost for GG Ads?
+            </div>
+            <div className="info2 flex flex-row gap-5 text-gray-500">
+                <div className="comments ">
+                    <MessageSquare className="inline-block mr-1" /> 25
+                </div>
+                <div className="views">
+                    <Eye className="inline-block mx-1" /> 32,6K
+                </div>
+            </div>
+        </a>
+    )
+}
+
+function LatestArticles() {
+    return (
+        <section className="latest-articles">
+            <h1 className="title text-4xl font-medium text-center mb-14">
+                Latest Articles
+            </h1>
+            <div className="articles grid grid-cols-3 gap-10">
+                <ArticleComponent />
+                <ArticleComponent />
+                <ArticleComponent />
+            </div>
+        </section>
+    )
+}
+
 export default function Themes() {
     return (
         <div className="container relative mx-auto mt-14">
@@ -334,6 +378,29 @@ export default function Themes() {
                     )}
                 </marquee>
             </section>
+            <LatestArticles />
+            <div className="subscription my-20 py-20 bg-[#003146] text-center text-white">
+                <div className="title text-3xl font-semibold text-orange-700 mb-2">
+                    Unlimited Access Pass
+                </div>
+                <div className="description text-sm">
+                    <div>
+                        Yearly access to all products with a huge discount
+                    </div>
+                    <div>
+                        Grab all current products and all updates for one year
+                    </div>
+                </div>
+                <div className="price mt-10 mb-20 text-5xl font-bold bg-orange-600 w-fit p-5 mx-auto">
+                    $99<sup>/yr</sup>
+                </div>
+                <a href="#" className="subscribe text-black mx-auto py-3 px-20 bg-[#5DA92F] text-2xl font-medium rounded-xl uppercase hover:brightness-110">
+                    subscribe
+                </a>
+                <div className="notice mt-8">
+                    The standard VAT rate may be charged, following the law of your country
+                </div>
+            </div>
         </div>
     )
 }
