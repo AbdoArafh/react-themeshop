@@ -114,7 +114,7 @@ function Orbits() {
 
 function BrowseButton({additionalClassNames=""}) {
     return (
-        <button className={"bg-orange-600 max-w-fit text-white py-3 px-12 rounded-lg hover:brightness-110 active:brightness-75 sm:mx-auto" + " " + additionalClassNames}>
+        <button className={"bg-orange-700 max-w-fit text-white py-3 px-12 rounded-lg hover:brightness-110 active:brightness-75 sm:mx-auto" + " " + additionalClassNames}>
             Browse
         </button>
     )
@@ -155,45 +155,45 @@ function Feature({title, description, Icon, blobColor}) {
 
 function WhyUs() {
     return (
-        <div className="why-us my-10">
-                <div className="text-center">
-                    <h1 className="font-bold text-3xl mb-5">
-                        Why Choose Tortoiz Themes
-                    </h1>
-                    <p>
-                        Our stratigy includes consistently evolving, to ensure that we are producing
-                    </p>
-                    <p>
-                        exceptional SEO for businesses.
-                    </p>
-                </div>
-                <div className="features grid grid-cols-4 px-1 mx-auto mt-10">
-                    <Feature
-                        title="Competitor <br> Research"
-                        description="Inovative Ideas <br> & Stratigies"
-                        Icon={ReactIcon}
-                        blobColor="bg-red-400"
-                    />
-                    <Feature
-                        title="Competitor <br> Research"
-                        description="Inovative Ideas <br> & Stratigies"
-                        Icon={ReactIcon}
-                        blobColor="bg-red-400"
-                    />
-                    <Feature
-                        title="Competitor <br> Research"
-                        description="Inovative Ideas <br> & Stratigies"
-                        Icon={ReactIcon}
-                        blobColor="bg-red-400"
-                    />
-                    <Feature
-                        title="Competitor <br> Research"
-                        description="Inovative Ideas <br> & Stratigies"
-                        Icon={ReactIcon}
-                        blobColor="bg-red-400"
-                    />
-                </div>
+        <section className="why-us my-10 mx-auto">
+            <div className="text-center">
+                <h1 className="font-medium text-4xl mb-5">
+                    Why Choose Tortoiz Themes
+                </h1>
+                <p>
+                    Our strategy includes consistently evolving, to ensure that we are producing
+                </p>
+                <p>
+                    exceptional SEO for businesses.
+                </p>
             </div>
+            <div className="features grid grid-cols-4 gap-10 px-5 mx-auto mt-10">
+                <Feature
+                    title="Competitor <br> Research"
+                    description="Help business with their brading <br> identity better"
+                    Icon={ReactIcon}
+                    blobColor="bg-red-400"
+                />
+                <Feature
+                    title="Competitor <br> Research"
+                    description="Help business with their brading <br> identity better"
+                    Icon={ReactIcon}
+                    blobColor="bg-red-400"
+                />
+                <Feature
+                    title="Competitor <br> Research"
+                    description="Help business with their brading <br> identity better"
+                    Icon={ReactIcon}
+                    blobColor="bg-red-400"
+                />
+                <Feature
+                    title="Competitor <br> Research"
+                    description="Help business with their brading <br> identity better"
+                    Icon={ReactIcon}
+                    blobColor="bg-red-400"
+                />
+            </div>
+        </section>
     )
 }
 
@@ -209,15 +209,92 @@ function SeperatedHeaderTitle({titles}) {
     )
 }
 
+function Product({key}) {
+    return (
+        <a href="#" key={key} className="product relative group flex flex-col gap-5">
+            <img src="https://via.placeholder.com/400x300.png" alt="placeholder image" className="object-cover w-[100%]" />
+            <div className="type text-sm text-orange-500">HTML</div>
+            <div className="name text-2xl font-medium group-hover:underline">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit
+            </div>
+            <p className="description">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas impedit ratione repudiandae rem ea
+            </p>
+            <div className="buy flex flex-row justify-between mt-4">
+                <a href="#" className="view-demo hover:text-orange-500 font-medium" target="_blank">
+                    View Demo
+                </a>
+                <div className="price font-medium">
+                    49$
+                </div>
+            </div>
+        </a>
+    )
+}
+
+function LatestProducts() {
+    return (
+        <section className="mt-20 latest-products flex flex-col gap-14">
+            <h1 className="title text-3xl font-medium text-center">
+                Our Latest Products
+            </h1>
+            <ul className="filters flex flex-row uppercase justify-around font-normal text-gray-800 select-none">
+                {["All", "website seo", "fb/gg ads", "email marketing", "web design", "video viral"].map(
+                    (filter, i) => (
+                        <li key={i.toString()} className="hover:text-orange-500 cursor-pointer">
+                            {filter}
+                        </li>
+                    )
+                )}
+            </ul>
+            <div className="products grid grid-cols-3 gap-10">
+                {Array.from(Array(9)).map(
+                    (_, i) => <Product key={i.toString()} />
+                )}
+            </div>
+            <BrowseButton additionalClassNames="mt-6" />
+        </section>
+    )
+}
+
+function JobTitle({position, company}) {
+    return (
+        <div className="job-title">
+            <span className="position text-gray-500">{position}</span>
+            {" "}
+            <span className="company text-orange-500">{company}</span>
+       </div>
+    )
+}
+
+function Rate() {
+    return (
+        <div className="rate flex flex-col gap-10">
+            <div className="review">
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, maiores! "
+            </div>
+            <div className="person flex flex-row h-16 gap-5">
+                <img src="https://via.placeholder.com/100" alt="person's profile picture" className="rounded-full" />
+                <div className="info my-auto">
+                    <div className="name font-medium">
+                        John Doe
+                    </div>
+                    <JobTitle position="Director At" company="Company"/>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default function Themes() {
     return (
         <div className="container relative mx-auto mt-14">
-            <div className="header my-10 mx-1 grid lg:grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 sm:gap-[100px]">
+            <section className="header mt-20 mb-52 mx-1 grid lg:gap-0 lg:grid-rows-1 lg:grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 sm:gap-[100px]">
                 <div className="text flex flex-col gap-10 lg:text-left sm:text-center">
                     <SeperatedHeaderTitle titles="Exquisitly <br> designed themes <br> for your next project" />
                     <div className="details flex flex-col">
                         <p>
-                            Our procucts are hand crafted for production
+                            Our products are hand crafted for production
                         </p>
                         <p>
                             & can get you up and running in minutes
@@ -226,46 +303,37 @@ export default function Themes() {
                     <BrowseButton additionalClassNames="lg:ml-0" />
                 </div>
                 <Orbits />
-            </div>
+            </section>
             <WhyUs />
-            <div className="latest-products flex flex-col gap-10">
-                <h1 className="title text-3xl font-medium text-center">
-                    Our Latest Products
+            <LatestProducts />
+            <section className="why-the-love my-20"> 
+                <h1 className="title text-center text-4xl font-medium">
+                    Why Clients Love Us
                 </h1>
-                <ul className="filters flex flex-row uppercase justify-around font-medium text-gray-800 select-none">
-                    {["All", "website seo", "fb/gg ads", "email marketing", "web design", "video viral"].map(
-                        (filter, i) => (
-                            <li key={i.toString()} className="hover:text-orange-500 cursor-pointer">
-                                {filter}
-                            </li>
-                        )
-                    )}
-                </ul>
-                <div className="products grid grid-cols-3 gap-10">
-                    {Array.from(Array(9)).map(
-                        (_, i) => (
-                            <div key={i.toString()} className="procut flex flex-col gap-3">
-                                <img src="https://via.placeholder.com/400x300.png" alt="placeholder image" />
-                                <div className="type text-sm text-orange-500">HTML</div>
-                                <div className="name text-2xl font-medium">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit
-                                </div>
-                                <p className="description">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas impedit ratione repudiandae rem ea
-                                </p>
-                                <div className="buy flex flex-row justify-between">
-                                    <a href="#" className="view-demo hover:underline font-medium" target="_blank">
-                                        View Demo
-                                    </a>
-                                    <div className="price">
-                                        49$
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    )}
+                <div className="description text-center my-6">
+                    <p>
+                        Our strategy includes consistently evolving, to ensure that we are producing
+                    </p>
+                    <p>
+                        exceptional SEO for businesses.
+                    </p>
                 </div>
-            </div>
+                <div className="rates mt-20 grid grid-cols-2 gap-10 overflow-scroll h-52">
+                    <Rate />
+                    <Rate />
+                    <Rate />
+                    <Rate />
+                    <Rate />
+                    <Rate />
+                </div>
+            </section>
+            <section className="collab my-20">
+                <marquee behavior="scroll" direction="left" scrolldelay="60">
+                    {Array.from(Array(8)).map(
+                        (_, i) => <img key={i.toString()} src="https://via.placeholder.com/500x100" alt="a company logo" className="inline-block mx-10" />
+                    )}
+                </marquee>
+            </section>
         </div>
     )
 }
