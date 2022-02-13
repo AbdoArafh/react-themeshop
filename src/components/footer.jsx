@@ -56,29 +56,34 @@ function SocialIcon({Icon, href}) {
 const InfoPiece = ({Icon, text}) =>
     <div className="infoPiece text-gray-500 mb-3"><Icon className="inline-block mr-2" />{text}</div>
 
-const LanguageOption = ({lang}) => (
-    <a href="#" className="uppercase hover:text-black transition-colors">
+const LanguageOption = ({lang, key}) => (
+    <a href="#" key={key} className="uppercase hover:text-black transition-colors">
         {lang}
     </a>
 )
 
-export default function Footer() {
-  return (
-    <footer className="container mx-auto mb-20">
-        <div className="upper-portion grid-footer">
-            <div className="site-info">
-                <div className="logo h-14 mb-8">
-                    <img src={Logo} alt="site logo" className="h-[100%]"/>
-                </div>
-                <div className="info">
-                    <h2>Information</h2>
-                    <address>
-                        <InfoPiece Icon={Navigation} text={"Lorem ipsum dolor sit amet consectetur."} />
-                    </address>
-                    <InfoPiece Icon={Mail} text="username@example.com" />
-                    <InfoPiece Icon={Phone} text="(+90) 543-535-226-367" />
-                </div>
+function FooterInfo() {
+    return (
+        <div className="site-info">
+            <div className="logo h-14 mb-8">
+                <img src={Logo} alt="site logo" className="h-[100%]"/>
             </div>
+            <div className="info">
+                <h2>Information</h2>
+                <address>
+                    <InfoPiece Icon={Navigation} text={"Lorem ipsum dolor sit amet consectetur."} />
+                </address>
+                <InfoPiece Icon={Mail} text="username@example.com" />
+                <InfoPiece Icon={Phone} text="(+90) 543-535-226-367" />
+            </div>
+        </div>
+    )
+}
+
+function UpperPortion() {
+    return (
+        <div className="upper-portion grid-footer">
+            <FooterInfo />
             <BunchOfLinks title="Company" links={
                 ["About Us",
                     "Team",
@@ -102,6 +107,19 @@ export default function Footer() {
             } />
             <NewsLetter />
         </div>
+    )
+}
+
+function LanguageSelect({langs}) {
+    return (
+        <div className="language-select flex flex-row gap-3 text-gray-400 justify-self-center">
+            {langs.map(lang => <LanguageOption lang={lang} key={lang} />)}
+        </div>
+    )
+}
+
+function LowerPortion() {
+    return (
         <div className="lower-portion grid grid-cols-3 mt-20">
             <div className="social-icons flex flex-row gap-3 justify-start text-gray-400">
                 <SocialIcon Icon={Twitter}/>
@@ -113,10 +131,16 @@ export default function Footer() {
             <div className="copyrights justify-self-center">
                 &copy; {new Date().getFullYear()} Tortoiz Themes All Rights Reserved
             </div>
-            <div className="language-select flex flex-row gap-3 text-gray-400 justify-self-center">
-                {["eng", "fra", "arb"].map(lang => <LanguageOption lang={lang} />)}
-            </div>
+            <LanguageSelect langs={["eng", "fra", "arb"]}/>
         </div>
+    )
+}
+
+export default function Footer() {
+  return (
+    <footer className="container mx-auto mb-20">
+        <UpperPortion />
+        <LowerPortion />
     </footer>
   )
 }

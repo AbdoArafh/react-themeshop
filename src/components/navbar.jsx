@@ -23,7 +23,12 @@ function NavItem({path, title, last}) {
 
 export default function Navbar() {
     return (
-        <nav className="navbar flex flex-row justify-between items-center sticky top-0 h-20 px-3 pt-2 bg-white z-40">
+        <nav className="navbar flex flex-row justify-between items-center sticky top-0 h-20 px-3 pt-4 bg-white z-40">
+            <div className="absolute top-0 right-0 left-0 h-2 grid grid-cols-3">
+                <i className="bg-[#ff4800]"></i>
+                <i className="bg-[#ffba00]"></i>
+                <i className="bg-[#2f2e42]"></i>
+            </div>
             <Logo />
             <ul className="nav-list flex flex-row list-none font-bold text-sm">
                 <NavItem path="/" title="Themes" />
