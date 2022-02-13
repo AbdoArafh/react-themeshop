@@ -3,8 +3,21 @@
 @tailwind components;
 @tailwind utilities;
 
-p {
-    @apply text-gray-500
+
+@layer base {
+    p {
+        @apply text-gray-500;
+    }
+    h2 {
+        @apply uppercase text-black font-medium text-lg mb-8;
+    }
+}
+
+@layer components {
+    .grid-footer {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 2fr;
+    }
 }
 
 .container  {
