@@ -11,7 +11,7 @@ function NavItem({path, title, last}) {
         <li className="nav-item relative px-5 after:block after:w-1 after:aspect-square after:absolute after:bg-gray-400 after:rounded-full after:-right-0 after:top-[50%] after:-translate-y-[50%] after:translate-x-[50%] last:after:hidden">
             <NavLink
                 className= {
-                        ({isActive}) => `${isActive ? "text-orange-500 " : ""}uppercase`
+                        ({isActive}) => `${isActive ? "text-orange-500 " : ""}uppercase hover:text-orange-500`
                     }
                 to={path}
             >
@@ -34,7 +34,7 @@ export default function Navbar() {
                 <NavItem path="/" title="Themes" />
                 <NavItem path="/plugins" title="Plugins" />
                 <NavItem path="/freebies" title="Freebies" />
-                <NavItem path="/news" title="News" />
+                <NavItem path="/faqs" title="FAQs" />
                 <NavItem path="/contact" title="Contact" last={true}/>
             </ul>
             <a href="#" className="pb-1 border-b border-black flex flex-row items-center gap-2">

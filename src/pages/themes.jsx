@@ -212,15 +212,17 @@ function SeperatedHeaderTitle({titles}) {
 
 function Product({key}) {
     return (
-        <a href="#" key={key} className="product relative group flex flex-col gap-5">
-            <img src="https://via.placeholder.com/400x300.png" alt="placeholder image" className="object-cover w-[100%]" />
-            <div className="type text-sm text-orange-500">HTML</div>
-            <div className="name text-2xl font-medium group-hover:underline">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit
-            </div>
-            <p className="description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas impedit ratione repudiandae rem ea
-            </p>
+        <div className="product">
+            <a href="#" key={key} className="relative group flex flex-col gap-5">
+                <img src="https://via.placeholder.com/400x300.png" alt="placeholder image" className="object-cover w-[100%]" />
+                <div className="type text-sm text-orange-500">HTML</div>
+                <div className="name text-2xl font-medium group-hover:underline">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit
+                </div>
+                <p className="description">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas impedit ratione repudiandae rem ea
+                </p>
+            </a>
             <div className="buy flex flex-row justify-between mt-4">
                 <a href="#" className="view-demo hover:text-orange-500 font-medium" target="_blank">
                     View Demo
@@ -229,7 +231,7 @@ function Product({key}) {
                     49$
                 </div>
             </div>
-        </a>
+        </div>
     )
 }
 
@@ -248,7 +250,7 @@ function LatestProducts() {
                     )
                 )}
             </ul>
-            <div className="products grid grid-cols-3 gap-10">
+            <div className="products grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
                 {Array.from(Array(9)).map(
                     (_, i) => <Product key={i.toString()} />
                 )}
