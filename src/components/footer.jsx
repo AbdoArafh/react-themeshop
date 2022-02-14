@@ -56,8 +56,8 @@ function SocialIcon({Icon, href}) {
 const InfoPiece = ({Icon, text}) =>
     <div className="infoPiece text-gray-500 mb-3"><Icon className="inline-block mr-2" />{text}</div>
 
-const LanguageOption = ({lang, key}) => (
-    <a href="#" key={key} className="uppercase hover:text-black transition-colors">
+const LanguageOption = ({lang}) => (
+    <a href="#" className="uppercase hover:text-black transition-colors">
         {lang}
     </a>
 )
