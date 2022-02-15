@@ -7,7 +7,7 @@ import Navbar from './components/navbar'
 import Footer from './components/footer'
 import FAQs from './pages/FAQs/index'
 import ProductDetails from './pages/Product Details/index'
-import products from './data/products.json'
+import { ProductsArray as products } from './utils/readyProducts'
 
 ReactDOM.render(
   <React.StrictMode>

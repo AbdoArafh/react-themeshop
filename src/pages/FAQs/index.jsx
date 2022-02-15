@@ -15,7 +15,7 @@ export default function FAQs() {
 
   return (
     <div className="faqs my-40 container mx-auto">
-        <div className="thin-container w-[100%] max-w-[720px] mx-auto">
+        <section className="thin-container w-[100%] max-w-[720px] mx-auto">
           <h3 className="text-center uppercase text-gray-500 ">If you have any questions</h3>
           <h1 className="text-center text-5xl mt-10 mb-32 font-medium">Frequently Asked Questions</h1>
           <ul className="filters flex flex-row justify-around text-gray-500">
@@ -43,14 +43,14 @@ export default function FAQs() {
             We're here to help! 
             <a href="#" className="ml-2 underline text-orange-500 hover:no-underline"> Contact Us</a>
           </h1>
-        </div>
-        <div className="newsletter">
+        </section>
+        <section className="newsletter">
           <form className="flex flex-row justify-between">
             <label htmlFor="email" className="uppercase">Subscribe to our news letter and get 10% of your purchase</label>
             <input type="email" name="email" id="email" autoComplete="no" placeholder="Your email address" className="outline-none" />
             <button type="submit" className="uppercase text-white bg-gray-900 py-1 px-4 font-medium hover:brightness-125">Subscribe</button>
           </form>
-        </div>
+        </section>
     </div>
   )
 }

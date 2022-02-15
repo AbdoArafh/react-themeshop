@@ -1,5 +1,6 @@
 import ReactIcon from '../components/icons/reactIcon';
 import { Eye, MessageSquare } from "react-feather";
+import { Link } from 'react-router-dom';
 
 class Vector2D {
     constructor(x=0, y=0) {
@@ -210,39 +211,39 @@ function SeperatedHeaderTitle({titles}) {
     )
 }
 
-function Product({key}) {
+function Product({product}) {
     return (
         <div className="product">
-            <a href="#" key={key} className="relative group flex flex-col gap-5">
-                <img src="https://via.placeholder.com/400x300.png" alt="placeholder image" className="object-cover w-[100%]" />
-                <div className="type text-sm text-orange-500">HTML</div>
+            <Link to={`/product-details/${product.id}`} className="relative group flex flex-col gap-5">
+                <img src={product.thumbnail} alt="placeholder image" className="object-cover w-[100%]" />
+                <div className="type text-sm text-orange-500">{product.compatibility.join(" ")}</div>
                 <div className="name text-2xl font-medium group-hover:underline">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit
+                    {product.name}
                 </div>
                 <p className="description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas impedit ratione repudiandae rem ea
+                    {product.description}
                 </p>
-            </a>
+            </Link>
             <div className="buy flex flex-row justify-between mt-4">
-                <a href="#" className="view-demo hover:text-orange-500 font-medium" target="_blank">
+                <a href={product.demo} className="view-demo hover:text-orange-500 font-medium" target="_blank">
                     View Demo
                 </a>
-                <div className="price font-medium">
-                    49$
+                <div className="price font-medium uppercase">
+                    {product.price}
                 </div>
             </div>
         </div>
     )
 }
 
-function LatestProducts() {
+function LatestProducts({products}) {
     return (
         <section className="mt-20 latest-products flex flex-col gap-14">
             <h1 className="title text-3xl font-medium text-center">
                 Our Latest Products
             </h1>
             <ul className="filters flex flex-row uppercase justify-around font-normal text-gray-800 select-none">
-                {["All", "website seo", "fb/gg ads", "email marketing", "web design", "video viral"].map(
+                {["All", "website seo", "fb/gg ads", "email marketing", "web design", "wordpress"].map(
                     (filter, i) => (
                         <li key={i.toString()} className="hover:text-orange-500 cursor-pointer">
                             {filter}
@@ -250,10 +251,11 @@ function LatestProducts() {
                     )
                 )}
             </ul>
-            <div className="products grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
-                {Array.from(Array(9)).map(
+            <div className="products grid lg:grid-cols-3 sm:grid-cols-2 sm:mx-2 gap-10">
+                {/* {Array.from(Array(9)).map(
                     (_, i) => <Product key={i.toString()} />
-                )}
+                )} */}
+                {products.map((product, i) => <Product key={i.toString()} product={product} />)}
             </div>
             <BrowseButton additionalClassNames="mt-6" />
         </section>
@@ -332,7 +334,7 @@ function LatestArticles() {
     )
 }
 
-export default function Themes() {
+export default function Themes({products}) {
     return (
         <div className="container relative mx-auto mt-14">
             <section className="header mt-20 mb-52 mx-1 grid lg:gap-0 lg:grid-rows-1 lg:grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 sm:gap-[100px]">
@@ -351,7 +353,7 @@ export default function Themes() {
                 <Orbits />
             </section>
             <WhyUs />
-            <LatestProducts />
+            <LatestProducts products={products} />
             <section className="why-the-love my-20"> 
                 <h1 className="title text-center text-4xl font-medium">
                     Why Clients Love Us
