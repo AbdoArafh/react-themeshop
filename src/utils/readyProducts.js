@@ -12,9 +12,10 @@ function pathToUrls(path) {
 
 function getProductsArray(obj, path, products=[]) {
     if (obj.id) {
+        const tags = obj.tags || [];
         return (Object.assign(
             obj,
-            {path: pathToUrls(path), tags: Array.from(path)}
+            {path: pathToUrls(path), tags: tags.concat(Array.from(path))}
         ))
     }
 
