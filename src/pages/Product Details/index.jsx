@@ -32,7 +32,7 @@ function CollapsableText({children}) {
     if (typeof children !== "string") return null;
     const maxLength = 300;
     const collapsable = children.length > maxLength;
-    const [collapsed, setCollapsed] = useState(true);
+    const [collapsed, setCollapsed] = useState(collapsable);
 
     function toggle() {
         setCollapsed(c => !c);
@@ -61,15 +61,13 @@ function DetailsComponent({details}) {
         <div className="product-details flex flex-col gap-10">
             {details.map(
                 (detail, i) => (
-                    <div key={i.toString()} className={`grid ${detail.src ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
+                    // todo delete this -----> <div key={i.toString()} className={`grid ${detail.src ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
+                    <div key={i.toString()} className={`flex gap-5 ${i & 1 ? "flex-row" : "flex-row-reverse"}`}>
                         {detail.src && <img src={detail.src} alt={detail.title} className="mx-auto" />}
                         <div className="text flex flex-col gap-5">
                             {detail.title && <h1 className="text-3xl">
                                 {detail.title}
                             </h1>}
-                            <p>
-                                {detail.p}
-                            </p>
                             <CollapsableText>
                                 {detail.p}
                             </CollapsableText>
