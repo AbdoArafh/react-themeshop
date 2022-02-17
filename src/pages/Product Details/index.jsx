@@ -1,8 +1,13 @@
-import { AlertTriangle, ThumbsUp, ArrowDown } from 'react-feather';
+import {
+    AlertTriangle,
+    ThumbsUp,
+    ArrowDown,
+    ShoppingCart as ShoppingCartIcon } from 'react-feather';
 import { useParams } from 'react-router-dom'
 import Error404 from '../../components/404';
 import StarRating from '../../components/starRating';
 import React, { useState } from 'react'
+import AddToCart from '../../utils/addToCart'
 
 function VersionInfoPiece({Key, value, last}) {
     return (
@@ -63,8 +68,8 @@ function DetailsComponent({details}) {
                 (detail, i) => (
                     // todo delete this -----> <div key={i.toString()} className={`grid ${detail.src ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
                     <div key={i.toString()} className={`flex gap-5 ${i & 1 ? "flex-row" : "flex-row-reverse"}`}>
-                        {detail.src && <img src={detail.src} alt={detail.title} className="mx-auto" />}
-                        <div className="text flex flex-col gap-5">
+                        {detail.src && <img src={detail.src} alt={detail.title} className="mx-auto w-[50%]" />}
+                        <div className="text flex flex-col gap-5 w-[50%]">
                             {detail.title && <h1 className="text-3xl">
                                 {detail.title}
                             </h1>}
@@ -204,12 +209,19 @@ export default function ProductDetails({products}) {
                             )
                         )}
                     </ul>
-                    <a href="#" className="order text-center text-white font-medium text-xl bg-orange-600 py-5 mx-4 rounded-xl">
-                        {product.price.toLowerCase() === "free"
-                            ? "Download For Free"
-                            : "Purchase Now"
-                        }
-                    </a>
+                    <div className="order flex flex-row text-white font-medium text-xl">
+                        <a href="#" className="now w-[80%] bg-orange-600 text-center py-5 mx-4 rounded-xl hover:brightness-125">
+                            {product.price.toLowerCase() === "free"
+                                ? "Download For Free"
+                                : "Purchase Now"
+                            }
+                        </a>
+                        <button
+                            className="add-to-cart bg-orange-600 w-[15%] flex items-center justify-center rounded-xl hover:brightness-125"
+                            onClick={() => AddToCart(product)}>
+                            <ShoppingCartIcon />
+                        </button>
+                    </div>
                     <div className="disclaimers text-gray-500">
                         <div className="ok flex flex-row gap-2 mb-6">
                             <ThumbsUp />

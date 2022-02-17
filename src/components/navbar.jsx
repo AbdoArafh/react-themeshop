@@ -3,7 +3,7 @@ import logoImg from "../../assets/themeshop-banner-logo.png"
 import { Menu as BurgerIcon, Heart as HeartIcon } from 'react-feather'
 
 function Logo() {
-    return <img src={logoImg} alt="logo" className="h-[100%]" />
+    return <NavLink to="/" className="h-[100%] relative"><img src={logoImg} alt="logo" className="h-[100%]"/></NavLink>
 }
 
 function NavItem({path, title, last}) {
