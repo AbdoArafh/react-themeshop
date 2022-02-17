@@ -7,7 +7,8 @@ import { useParams } from 'react-router-dom'
 import Error404 from '../../components/404';
 import StarRating from '../../components/starRating';
 import React, { useState } from 'react'
-import {AddToCart} from '../../utils/cart'
+import { AddToCart } from '../../utils/cart'
+import { useNavigate } from 'react-router-dom'
 
 function VersionInfoPiece({Key, value, last}) {
     return (
@@ -31,6 +32,23 @@ function ProductPath({path, additionalClassName}) {
             {path.at(-1).replace("/", " ").trim().split(" ").join("/").concat("/")}
         </div>)
 
+}
+
+function PurchaseButton({product}) {
+    const navigate = useNavigate();
+    return (
+        <button
+            className="now w-[80%] bg-orange-600 text-center py-5 mx-4 rounded-xl hover:brightness-125"
+            onClick={() => {
+                AddToCart(product);
+                navigate("/shopping-cart");
+            }}>
+            {product.price.toLowerCase() === "free"
+                ? "Download For Free"
+                : "Purchase Now"
+            }
+        </button>
+    )
 }
 
 function CollapsableText({children}) {
@@ -210,12 +228,7 @@ export default function ProductDetails({products}) {
                         )}
                     </ul>
                     <div className="order flex flex-row text-white font-medium text-xl">
-                        <a href="#" className="now w-[80%] bg-orange-600 text-center py-5 mx-4 rounded-xl hover:brightness-125">
-                            {product.price.toLowerCase() === "free"
-                                ? "Download For Free"
-                                : "Purchase Now"
-                            }
-                        </a>
+                        <PurchaseButton product={product} />
                         <button
                             className="add-to-cart bg-orange-600 w-[15%] flex items-center justify-center rounded-xl hover:brightness-125"
                             onClick={() => AddToCart(product)}>

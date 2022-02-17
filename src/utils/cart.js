@@ -41,4 +41,11 @@ export function decrementQuantity(id) {
     const products = getProducts();
     products[id].quantity--;
     setProducts(products);
+    if (products[id].quantity === 0) {
+        removeFromCart(id);
+    }
+}
+
+export function clearCart() {
+    localStorage.removeItem(CART_NAME);
 }

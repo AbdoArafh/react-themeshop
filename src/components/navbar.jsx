@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import logoImg from "../../assets/themeshop-banner-logo.png"
-import { Menu as BurgerIcon, Heart as HeartIcon } from 'react-feather'
+import { Menu as BurgerIcon, Heart as HeartIcon, ShoppingCart } from 'react-feather'
 
 function Logo() {
     return <NavLink to="/" className="h-[100%] relative"><img src={logoImg} alt="logo" className="h-[100%]"/></NavLink>
@@ -41,6 +41,9 @@ export default function Navbar() {
                 Join Club!
                 <HeartIcon color="currentColor" className="text-red-800"/>
             </a>
+            <NavLink to="/shopping-cart" className="">
+                <ShoppingCart />
+            </NavLink>
             <BurgerIcon size={24} strokeWidth={2.5} className="cursor-pointer hover:scale-125 transition-transform" />
         </nav>
     )

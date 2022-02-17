@@ -4,12 +4,15 @@ import {
   XCircle,
   MinusCircle,
   PlusCircle } from "react-feather";
+import { Link } from "react-router-dom";
+import FeaturedProducts from "../../components/featuredProducts";
 import {
   getProducts,
   removeFromCart,
   CART_NAME,
   incrementQuantity,
-  decrementQuantity } from "../../utils/cart"
+  decrementQuantity,
+  clearCart } from "../../utils/cart"
 
 function getPrice(str) {
   if (str.toLowerCase() === "free") return 0;
@@ -30,7 +33,6 @@ export default function ShoppingCart() {
 
   function storageHandler(e) {
     if (e.key !== CART_NAME) return;
-    // setProducts(getProducts());
     updateProducts();
   }
 
@@ -91,7 +93,7 @@ export default function ShoppingCart() {
                     </td>
                     <td>
                       <button
-                        className="text-gray-500 hover:text-black transition-colors"
+                        className="text-red-500 hover:text-red-400 transition-colors mr-2"
                         onClick={() => {
                           removeFromCart(id);
                           updateProducts();     
@@ -99,7 +101,7 @@ export default function ShoppingCart() {
                         <XCircle className="w-5" />
                       </button>
                       <button
-                        className="text-gray-500 hover:text-black transition-colors"
+                        className="text-green-400 hover:text-green-300 transition-colors mr-2"
                         onClick={() => {
                           incrementQuantity(id);
                           updateProducts();     
@@ -107,7 +109,7 @@ export default function ShoppingCart() {
                         <PlusCircle className="w-5" />
                       </button>
                       <button
-                        className=" text-gray-500 hover:text-black transition-colors"
+                        className=" text-gray-500 hover:text-gray-400 transition-colors"
                         onClick={() => {
                           decrementQuantity(id);
                           updateProducts();     
@@ -120,8 +122,27 @@ export default function ShoppingCart() {
               }
             )}
           </tbody>
-        </table>        
+        </table>
+        <div className="controls my-10 mx-1 flex flex-row justify-between">
+            <Link to="/" className="py-5 px-10 bg-orange-600 text-white ">
+              &lt; &nbsp; Back to Shop
+            </Link>
+
+            {Object.keys(products).length
+            ? <button
+                className="clear-all flex flex-row items-end text-red-500 hover:text-red-400"
+                onClick={() => {
+                  clearCart();
+                  updateProducts();
+                }}
+              >
+                <XCircle className="w-5 inline mr-1" />
+                Clear All
+              </button>
+            : null}
+        </div>      
       </div>
+      <FeaturedProducts />
     </div>
   )
 }

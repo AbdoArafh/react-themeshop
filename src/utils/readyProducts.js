@@ -39,3 +39,18 @@ function getProductsArray(obj, path, products=[]) {
  */
 
 export const ProductsArray = getProductsArray(products, []);
+
+function avgRating(product) {
+    return product.reviews.reduce((a, b) => a + b.rating, 0) / product.reviews.length;
+}
+
+export function getFeaturedProductsArray(n) {
+    const products = Array.from(ProductsArray);
+
+    products.sort((a, b) => avgRating(b) - avgRating(a));
+
+    return products.slice(0, n);
+}
+
+const FEATURED_COUNT = 3;
+export const FeaturedProductsArray = getFeaturedProductsArray(FEATURED_COUNT);
