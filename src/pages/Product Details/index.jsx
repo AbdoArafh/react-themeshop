@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import Error404 from '../../components/404';
 import StarRating from '../../components/starRating';
 import React, { useState } from 'react'
-import AddToCart from '../../utils/addToCart'
+import {AddToCart} from '../../utils/cart'
 
 function VersionInfoPiece({Key, value, last}) {
     return (
