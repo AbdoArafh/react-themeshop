@@ -9,6 +9,7 @@ import FAQs from './pages/FAQs/index'
 import ProductDetails from './pages/Product Details/index'
 import { ProductsArray as products } from './utils/readyProducts'
 import ShoppingCart from './pages/Shopping Cart'
+import AccountDashboard from './pages/Account Dashboard'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Route path="/faqs" element={<FAQs />}/>
         <Route path="/product-details/:id" element={<ProductDetails products={products} />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/account-dashboard" element={<AccountDashboard />} />
       </Routes>
       <Footer />
     </Router>

@@ -52,7 +52,7 @@ export default function ShoppingCart() {
         <div className="title text-xl mb-8">Your cart items</div>
         <table className="w-[100%]">
           <thead className="shadow-xl h-16">
-            <tr>
+            <tr className="text-gray-500 font-medium text-left">
               {["", "Product Name", "Price", "Quantity", "Total", ""].map(
                 (head, i) => <th key={i.toString()}>{head}</th>
               )}

@@ -11,9 +11,6 @@
     h2 {
         @apply uppercase text-black font-medium text-lg mb-8;
     }
-    th {
-        @apply text-gray-500 font-medium text-left;
-    }
 }
 
 @layer components {
