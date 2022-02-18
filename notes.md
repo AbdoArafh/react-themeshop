@@ -1,7 +1,6 @@
 # Notes
----
 
-## TODO
+### TODO
 - responive design
 - the slider
 - the rotating icons
