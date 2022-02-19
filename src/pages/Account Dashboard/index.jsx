@@ -40,7 +40,7 @@ export default function AccountDashboard() {
                 )}
             </ul>
             <div className="content">
-                {createElement(sections[chosenSection], null, null)}
+                {createElement(sections[chosenSection], {navigate: handleSectionNavigation}, null)}
             </div>
         </div>
     )    

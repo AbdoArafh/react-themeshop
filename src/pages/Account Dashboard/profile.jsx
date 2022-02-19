@@ -1,14 +1,5 @@
 import { Edit2 } from "react-feather"
 
-const accountDetails = {
-  profile_picture: "https://via.placeholder.com/100x100.png/ccc/ccc",
-  full_name: "John Doe",
-  email: "username@example.com",
-  phone: "+(01) 234 567 890",
-  country: "LaLa Land",
-  post_code: "123456"
-}
-
 function PersonalInfoPiece({name, value}) {
   return (
     <div className="text-center">
@@ -18,7 +9,7 @@ function PersonalInfoPiece({name, value}) {
   )
 }
 
-export default function Profile() {
+export default function Profile({navigate, accountDetails}) {
     return (
         <div className="profile flex flex-col justify-center">
             <img className="w-32 mx-auto mb-5 rounded-full" src={accountDetails.profile_picture} alt="profile picture" />
@@ -31,10 +22,10 @@ export default function Profile() {
                 <PersonalInfoPiece name={"Post Code"} value={accountDetails.post_code} />
             </div>
             <div className="edit text-center">
-                <a href="#" className="pb-1 border-[1px] border-b-black hover:border-b-transparent">
-                <Edit2 className="inline mr-2 h-5" />
-                Edit Profile
-                </a>
+                <button onClick={navigate} data-name="Account Details" className="pb-1 border-[1px] border-b-black hover:border-b-transparent">
+                  <Edit2 className="inline mr-2 h-5" />
+                  Edit Profile
+                </button>
             </div>
         </div>
     )
