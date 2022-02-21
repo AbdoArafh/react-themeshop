@@ -6,4 +6,7 @@ export default class Vec2D {
     clone() {
         return new Vec2D(this.x, this.y);
     }
+    heading() {
+        return Math.acos(this.x)
+    }
 }

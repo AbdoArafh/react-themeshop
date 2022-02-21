@@ -37,7 +37,7 @@
 } */
 
 .orbit {
-    @apply rounded-full border-gray-400 border-2 border-dashed aspect-square relative animate-spin;
+    @apply rounded-full border-gray-400 border-2 border-dashed aspect-square relative; /* animate-spin; */
 }
 
 .orbit-sm {
@@ -59,7 +59,9 @@
     @apply w-3 aspect-square bg-gray-900 absolute
 }
 
-.top {
+/* todo remove all of this */
+
+/* .top {
     @apply top-0 left-[50%] -translate-x-[50%] -translate-y-[50%];
 }
 
@@ -73,7 +75,7 @@
 
 .right {
     @apply top-[50%] right-0 translate-x-[50%] -translate-y-[50%];
-}
+} */
 
 .scale-300 {
     transform: scale(3);
