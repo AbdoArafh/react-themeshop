@@ -8,7 +8,7 @@ export default function FeaturedProducts() {
             <h1 className="font-medium text-3xl mb-8">Featured Products</h1>
             <div className="products grid lg:grid-cols-3 sm:grid-cols-2 sm:mx-2 gap-10">
                 {products.map(
-                    product => <Product product={product} />
+                    (product, i) => <Product key={i.toString()} product={product} />
                 )}
             </div>
         </div>

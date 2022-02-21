@@ -30,7 +30,7 @@ export default function Navbar() {
                 <i className="bg-[#2f2e42]"></i>
             </div>
             <Logo />
-            <ul className="nav-list flex flex-row list-none font-bold text-sm">
+            <ul className="nav-list hidden flex-row list-none font-bold text-sm lg:flex sm:hidden">
                 <NavItem path="/" title="Themes" />
                 <NavItem path="/plugins" title="Plugins" />
                 <NavItem path="/freebies" title="Freebies" />

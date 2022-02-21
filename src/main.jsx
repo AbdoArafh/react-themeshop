@@ -10,6 +10,7 @@ import ProductDetails from './pages/Product Details/index'
 import { ProductsArray as products } from './utils/readyProducts'
 import ShoppingCart from './pages/Shopping Cart'
 import AccountDashboard from './pages/Account Dashboard'
+import AllProducts from './pages/Products/index'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,10 @@ ReactDOM.render(
         <Route path="/product-details/:id" element={<ProductDetails products={products} />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/account-dashboard" element={<AccountDashboard />} />
+        {/* Fun fact: It's actually recommended starting from v6 of react router */}
+        {/* to add optional parameters */}
+        <Route path="/all-products/:tags" element={<AllProducts products={products} />} />
+        <Route path="/all-products" element={<AllProducts products={products} />} />
       </Routes>
       <Footer />
     </Router>

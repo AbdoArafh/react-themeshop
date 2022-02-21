@@ -7,45 +7,50 @@ import {
 import { Link } from "react-router-dom";
 import FeaturedProducts from "../../components/featuredProducts";
 import {
-  getProducts,
+  getOrders,
   removeFromCart,
   CART_NAME,
   incrementQuantity,
   decrementQuantity,
-  clearCart } from "../../utils/cart"
-
-function getPrice(str) {
-  if (str.toLowerCase() === "free") return 0;
-  return Number(str.replaceAll("$", ""))
-}
-
-function calculateTotal(price, quantity) {
-  if (getPrice(price) === 0) return "free";
-  return (getPrice(price) * quantity).toString() + "$"
-}
+  clearCart,
+  calculateTotal,
+  getPrice } from "../../utils/cart"
 
 export default function ShoppingCart() {
-  const [products, setProducts] = useState(getProducts());
+  const [orders, setOrders] = useState(getOrders());
+  const [total, setTotal] = useState(0);
 
-  function updateProducts() {
-    setProducts(getProducts());
+  function updateOrders() {
+    setOrders(getOrders());
+    setOrders(orders => {
+      Object.keys(orders).forEach(
+        key => {
+          const order = orders[key];
+          order.total = calculateTotal(order.price, order.quantity);
+          return order;
+        }
+      );
+      setTotal(Object.values(orders).reduce((a, b) => a + getPrice(b.total), 0));
+      return orders;
+    });
   }
 
   function storageHandler(e) {
     if (e.key !== CART_NAME) return;
-    updateProducts();
+    updateOrders();
   }
 
   useEffect(() => {
     window.addEventListener("storage", storageHandler);
+    updateOrders();
     return () => {
       window.removeEventListener("storage", storageHandler);
     }
-  })
+  }, [])
 
   return (
     <div className="shopping-cart container mx-auto my-20">
-      <div className="text-center uppercase text-gray-500">Your favorite products</div>
+      <div className="text-center uppercase text-gray-500">Your favorite proucts</div>
       <h1 className="text-center my-10 text-5xl font-semibold">Shopping Cart</h1>
 
       <div className="cart">
@@ -59,20 +64,20 @@ export default function ShoppingCart() {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(products).map(
+            {Object.keys(orders).map(
               (id, i) => {
-                const product = products[id];
+                const order = orders[id];
                 return (
                   <tr key={i.toString()}>
                     <td className="w-32 py-10">
-                      <img src={product.src} alt={product.name} className="pr-5" />
+                      <img src={order.src} alt={order.name} className="pr-5" />
                     </td>
                     <td>
                       <div className="font-medium">
-                        {product.name}
+                        {order.name}
                       </div>
                       <ul className="features ml-3">
-                        {product.features.slice(0, 2).map(
+                        {order.features.slice(0, 2).map(
                           (feature, i) => (
                             <li key={i.toString()}>
                               <CheckSquare className="inline h-5 text-green-600 mr-1"/>
@@ -83,20 +88,20 @@ export default function ShoppingCart() {
                       </ul>
                     </td>
                     <td className="uppercase">
-                      {product.price}
+                      {order.price}
                     </td>
                     <td>
-                      {product.quantity}
+                      {order.quantity}
                     </td>
                     <td className="uppercase">
-                      {calculateTotal(product.price, product.quantity)}
+                      {order.total}
                     </td>
                     <td>
                       <button
                         className="text-red-500 hover:text-red-400 transition-colors mr-2"
                         onClick={() => {
                           removeFromCart(id);
-                          updateProducts();     
+                          updateOrders();     
                         }}>
                         <XCircle className="w-5" />
                       </button>
@@ -104,7 +109,7 @@ export default function ShoppingCart() {
                         className="text-green-400 hover:text-green-300 transition-colors mr-2"
                         onClick={() => {
                           incrementQuantity(id);
-                          updateProducts();     
+                          updateOrders();     
                         }}>
                         <PlusCircle className="w-5" />
                       </button>
@@ -112,7 +117,7 @@ export default function ShoppingCart() {
                         className=" text-gray-500 hover:text-gray-400 transition-colors"
                         onClick={() => {
                           decrementQuantity(id);
-                          updateProducts();     
+                          updateOrders();     
                         }}>
                         <MinusCircle className="w-5" />
                       </button>
@@ -128,19 +133,37 @@ export default function ShoppingCart() {
               &lt; &nbsp; Back to Shop
             </Link>
 
-            {Object.keys(products).length
+            {Object.keys(orders).length
             ? <button
                 className="clear-all flex flex-row items-end text-red-500 hover:text-red-400"
                 onClick={() => {
                   clearCart();
-                  updateProducts();
+                  updateOrders();
                 }}
               >
                 <XCircle className="w-5 inline mr-1" />
                 Clear All
               </button>
             : null}
-        </div>      
+        </div>
+        {Object.keys(orders).length > 0 && 
+          <div className="purchase flex my-20">
+              <div className="mx-auto md:ml-auto md:mr-0">
+                <div className="total flex flex-row justify-between">
+                  <span className="text font-semibold">
+                    Total
+                  </span>
+                  <span className="price">
+                    {total !== 0 ? total + "$" : "FREE"}
+                  </span>
+                </div>
+                <div className="sep h-[1px] bg-black/20 my-8"></div>
+                <a href="#" className="text-white py-4 px-10 bg-orange-600">
+                  Proceed To Checkout
+                </a>
+              </div>
+          </div>
+        }
       </div>
       <FeaturedProducts />
     </div>

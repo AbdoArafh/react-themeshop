@@ -82,7 +82,7 @@ function FooterInfo() {
 
 function UpperPortion() {
     return (
-        <div className="upper-portion grid-footer">
+        <div className="upper-portion lg:grid-footer justify-center">
             <FooterInfo />
             <BunchOfLinks title="Company" links={
                 ["About Us",
@@ -120,7 +120,7 @@ function LanguageSelect({langs}) {
 
 function LowerPortion() {
     return (
-        <div className="lower-portion grid grid-cols-3 mt-20">
+        <div className="lower-portion grid md:grid-cols-3 mt-20">
             <div className="social-icons flex flex-row gap-3 justify-start text-gray-400">
                 <SocialIcon Icon={Twitter}/>
                 <SocialIcon Icon={GitHub}/>

@@ -1,6 +1,8 @@
-import ReactIcon from '../components/icons/reactIcon';
+import ReactIcon from '../../components/icons/reactIcon';
 import { Eye, MessageSquare } from "react-feather";
-import Product from '../components/product'
+import Products from '../../components/products';
+import { Link } from 'react-router-dom'
+import Orbits from './orbits';
 
 class Vector2D {
     constructor(x=0, y=0) {
@@ -33,92 +35,12 @@ class Vector2D {
     }
 }
 
-function Orbit({placements, size}) {
-    // const [orbits, setOrbits] = (placements.map(
-    //     placement => (
-    //         {
-    //             direction: {},
-    //             placement,
-    //             pos
-    //         }
-    //     )        
-    // ));
-
-    /**
-     * x = cos(a)
-     * y = sin(a)
-     * a = acos(x)
-     */
-
-    // const directions = {
-    //     top: new Vector2D(0, -1),
-    //     bottom: new Vector2D(0, 1),
-    //     left: new Vector2D(-1, 0),
-    //     right: new Vector2D(1, 0)
-    // }
-
-    // const parentSize = {x: 200, y: 200};
-
-    // const d = 100;
-
-    // const orbits = placements.map(
-    //     placement => {
-    //         return {
-    //             placement,
-    //             direction: directions[placement],
-    //             pos() {
-    //                 return directions[placement].copy().setMag(d);
-    //             },
-    //         }
-    //     }
-    // )
-
-    // console.log(orbits);
-
-    // return null;
-
-    return (
-        <div className="center">
-            <div className={`orbit orbit-${size}`}>
-                {placements.map(
-                    placement => (
-                        <div key={placement} data-placement={placement} className={`icon ${placement}`}></div>
-                    )
-                )}
-            </div>
-        </div>
-    //     <div className="center">
-    //         <div className={`orbit orbit-${size}`}>
-    //             {orbits.map(
-    //                 orbit => {
-    //                     return (
-    //                         <div key={orbit.placement} className={"icon top-0 left-0"} style={`transform: translate(${orbit.pos().x + parentSize.x}px, ${orbit.pos().y + parentSize.y}px)`}>
-
-    //                         </div>
-    //                     )
-    //                 }
-    //             )    
-    //             }
-    //         </div>
-    //     </div>
-    )
-}
-
-function Orbits() {
-    return (
-		<div className="orbits">
-            <Orbit placements={["top", "bottom"]} size="sm"/>
-            <Orbit placements={["left", "right"]} size="md"/>
-            <Orbit placements={["top", "bottom", "left", "right"]} size="lg"/>
-        </div>
-    )
-}
 
 function BrowseButton({additionalClassNames=""}) {
     return (
-        <button className={"bg-orange-700 max-w-fit text-white py-3 px-12 rounded-lg hover:brightness-110 active:brightness-75 sm:mx-auto" + " " + additionalClassNames}>
+        <Link to="/all-products" className={"bg-orange-700 max-w-fit text-white py-3 px-12 rounded-lg hover:brightness-110 active:brightness-75 sm:mx-auto" + " " + additionalClassNames}>
             Browse
-        </button>
+        </Link>
     )
 }
 
@@ -169,7 +91,7 @@ function WhyUs() {
                     exceptional SEO for businesses.
                 </p>
             </div>
-            <div className="features grid grid-cols-4 gap-10 px-5 mx-auto mt-10">
+            <div className="features grid lg:grid-cols-4 sm:grid-cols-2 justify-center gap-10 px-5 mt-10">
                 <Feature
                     title="Competitor <br> Research"
                     description="Help business with their brading <br> identity better"
@@ -217,21 +139,8 @@ function LatestProducts({products}) {
             <h1 className="title text-3xl font-medium text-center">
                 Our Latest Products
             </h1>
-            <ul className="filters flex flex-row uppercase justify-around font-normal text-gray-800 select-none">
-                {["All", "website seo", "fb/gg ads", "email marketing", "web design", "wordpress"].map(
-                    (filter, i) => (
-                        <li key={i.toString()} className="hover:text-orange-500 cursor-pointer">
-                            {filter}
-                        </li>
-                    )
-                )}
-            </ul>
-            <div className="products grid lg:grid-cols-3 sm:grid-cols-2 sm:mx-2 gap-10">
-                {/* {Array.from(Array(9)).map(
-                    (_, i) => <Product key={i.toString()} />
-                )} */}
-                {products.map((product, i) => <Product key={i.toString()} product={product} />)}
-            </div>
+            {/* TODO sort by date and get only certain amount */}
+            <Products products={products} />
             <BrowseButton additionalClassNames="mt-6" />
         </section>
     )
@@ -300,7 +209,7 @@ function LatestArticles() {
             <h1 className="title text-4xl font-medium text-center mb-14">
                 Latest Articles
             </h1>
-            <div className="articles grid grid-cols-3 gap-10">
+            <div className="articles grid gap-10 lg:grid-cols-3 sm:grid-cols-2">
                 <ArticleComponent />
                 <ArticleComponent />
                 <ArticleComponent />
@@ -312,8 +221,8 @@ function LatestArticles() {
 export default function Themes({products}) {
     return (
         <div className="container relative mx-auto mt-14">
-            <section className="header mt-20 mb-52 mx-1 grid lg:gap-0 lg:grid-rows-1 lg:grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 sm:gap-[100px]">
-                <div className="text flex flex-col gap-10 lg:text-left sm:text-center">
+            <section className="header mt-20 mb-52 mx-1 grid grid-rows-2 gap-[100px] lg:gird-rows-1 lg:gap-0 lg:grid-cols-2 sm:grid-cols-1 sm:grid-rows-2">
+                <div className="text flex flex-col gap-10 text-center lg:text-left sm:text-center">
                     <SeperatedHeaderTitle titles="Exquisitly <br> designed themes <br> for your next project" />
                     <div className="details flex flex-col">
                         <p>
@@ -323,7 +232,7 @@ export default function Themes({products}) {
                             & can get you up and running in minutes
                         </p>
                     </div>
-                    <BrowseButton additionalClassNames="lg:ml-0" />
+                    <BrowseButton additionalClassNames="mx-auto lg:ml-0" />
                 </div>
                 <Orbits />
             </section>
@@ -341,7 +250,7 @@ export default function Themes({products}) {
                         exceptional SEO for businesses.
                     </p>
                 </div>
-                <div className="rates mt-20 grid grid-cols-2 gap-10 overflow-scroll h-52">
+                <div className="rates mt-20 grid lg:grid-cols-2 gap-10 overflow-scroll h-52">
                     <Rate />
                     <Rate />
                     <Rate />

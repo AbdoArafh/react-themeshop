@@ -1,9 +1,9 @@
 # Notes
 
 ### TODO
-- [ ] responive design
-- [ ] the slider
+- [ ] the reviews carousel
 - [ ] the rotating icons
-- [ ] articles as dynamic as possible
+- [x] responive design
 - [x] add the account page (design only)
-- [ ] don't add copouns or taxes just checkout
+- [x] don't add copouns or taxes just checkout
+- [x] the all products page with tags
