@@ -1,6 +1,8 @@
 // icon:react | Devicons https://vorillaz.github.io/devicons/#/main | Theodore Vorillas
 
-function ReactIcon(props) {
+import { forwardRef } from 'react'
+
+export default forwardRef(function ReactIcon(props, ref) {
   return (
     <svg
       viewBox="0 0 34 32"
@@ -8,6 +10,7 @@ function ReactIcon(props) {
       height="1em"
       width="1em"
       {...props}
+      ref={ref}
     >
       <path
         fill="currentColor"
@@ -19,6 +22,4 @@ function ReactIcon(props) {
       />
     </svg>
   );
-}
-
-export default ReactIcon;
+})

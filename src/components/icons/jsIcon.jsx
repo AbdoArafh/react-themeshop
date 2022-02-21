@@ -1,6 +1,8 @@
 // icon:js-badge | Devicons https://vorillaz.github.io/devicons/#/main | Theodore Vorillas
 
-function JsBadgeIcon(props) {
+import { forwardRef } from 'react'
+
+export default forwardRef(function JsBadgeIcon(props, ref) {
   return (
     <svg
       viewBox="0 0 32 32"
@@ -8,6 +10,7 @@ function JsBadgeIcon(props) {
       height="1em"
       width="1em"
       {...props}
+      ref={ref}
     >
       <path
         fill="currentColor"
@@ -15,6 +18,4 @@ function JsBadgeIcon(props) {
       />
     </svg>
   );
-}
-
-export default JsBadgeIcon;
+})

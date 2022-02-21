@@ -1,23 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
-import Vec2D from '../../utils/vectors.js';
-import { round } from '../../utils/general';
-
-function useAnimationFrame(callback) {
-    const requestRef = useRef();
-    const previousTimeRef = useRef();
-    const animate = time => {
-        if (previousTimeRef.current != undefined) {
-            const deltaTime = time - previousTimeRef.current;
-            callback(deltaTime);
-        }
-        previousTimeRef.current = time;
-        requestRef.current = requestAnimationFrame(animate);
-    }
-    useEffect(() => {
-        requestRef.current = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(requestRef.current);
-    }, []);
-}
+import { useEffect, useRef, useState, createElement } from 'react'
+import Vec2D from '../../utils/vectors.js'
+import { round } from '../../utils/general'
+import ReactIcon from '../../components/icons/reactIcon'
+import BootstrapIcon from '../../components/icons/bootstrapIcon'
+import JSIcon from '../../components/icons/jsIcon'
+import ShopifyIcon from '../../components/icons/shopifyIcon'
+import VueIcon from '../../components/icons/vueIcon'
+import CSSIcon from '../../components/icons/css3icon'
+import HTMLIcon from '../../components/icons/html5icons'
+import useAnimationFrame from '../../hooks/useAnimationFrame.js'
+import { GitBranch } from 'react-feather'
 
 function OrbitingIcon({data, width, height, direction}) {
 
@@ -40,13 +32,14 @@ function OrbitingIcon({data, width, height, direction}) {
     }
 
     return (
-        <div
-            key={data.placement}
-            className="icon absolute top-0 left-0 z-10"
-            style={{transform: `translate(${getX(data.direction)}px, ${getY(data.direction)}px)`}}
-            ref={iconRef}
-        >
-        </div>
+        createElement(data.icon,
+            {
+                key: data.placement,
+                className: "w-6 h-6 top-0 left-0 z-10 absolute",
+                style: {transform: `translate(${getX(data.direction)}px, ${getY(data.direction)}px)`},
+                ref: iconRef,
+            },
+            null)
     )
 }
 
@@ -59,12 +52,12 @@ function Orbit({icons, size, speed=1}) {
         right: new Vec2D(1, 0) 
     }
         
-    const [iconsData] = useState(icons.map(
-        icon => ({
-            placement: icon.placement,
-            direction: directions[icon.placement].heading(),
+    const [iconsData] = useState(Object.keys(icons).map(
+        key => ({
+            placement: key,
+            direction: directions[key].heading(),
             pos: new Vec2D(),
-            icon: icon.icon
+            icon: icons[key]
         })
     ));
 
@@ -75,10 +68,19 @@ function Orbit({icons, size, speed=1}) {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
 
+    function updateSize() {
+        setWidth(orbitRef.current.clientWidth);
+        setHeight(orbitRef.current.clientHeight);
+    }
+
     useEffect(
         () => {
-            setWidth(orbitRef.current.clientWidth);
-            setHeight(orbitRef.current.clientHeight);
+            updateSize();
+            // todo replace with resize observer
+            window.addEventListener("resize", updateSize);
+            return () => {
+                window.removeEventListener("resize", updateSize);
+            }
         }
     , []);
 
@@ -88,6 +90,9 @@ function Orbit({icons, size, speed=1}) {
     
     return (
         <div className="center">
+            <div className="center">
+                <div className={`orbit orbit-spinning orbit-${size}`}></div>
+            </div>
             <div ref={orbitRef} className={`orbit orbit-${size}`}>
                 {iconsData.map(
                     data => (
@@ -101,21 +106,25 @@ function Orbit({icons, size, speed=1}) {
 
 export default function Orbits() {
     return (
-		<div className="orbits">
-            <Orbit icons={[
-                    {placement: "top"},
-                    {placement: "bottom"}
-                ]} size="sm" speed={3} />
-            <Orbit icons={[
-                    {placement: "left"},
-                    {placement: "right"}
-                ]} size="md"/>
-            <Orbit icons={[
-                    {placement: "top"},
-                    {placement: "bottom"},
-                    {placement: "left"},   
-                    {placement: "right"}   
-                ]} size="lg"/>
+		<div className="orbits relative">
+            <Orbit icons={{
+                        top: HTMLIcon,
+                        bottom: CSSIcon,
+                        left: JSIcon,
+                        right: BootstrapIcon
+                    }}
+                size="sm"
+                speed={3} />
+            <Orbit icons={{
+                        top: ReactIcon,
+                        bottom: VueIcon
+                    }}
+            size="md"/>
+            <Orbit icons={{
+                        left: GitBranch,
+                        right: ShopifyIcon
+                    }}
+                size="lg"/>
         </div>
     )
 }

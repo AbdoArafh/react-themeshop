@@ -1,8 +1,7 @@
 # Notes
 
 ### TODO
-- [ ] the reviews carousel
-- [ ] the rotating icons
+- [x] the rotating icons
 - [x] responive design
 - [x] add the account page (design only)
 - [x] don't add copouns or taxes just checkout

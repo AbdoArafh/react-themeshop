@@ -1,6 +1,8 @@
 // icon:css3 | Devicons https://vorillaz.github.io/devicons/#/main | Theodore Vorillas
 
-function Css3Icon(props) {
+import { forwardRef } from 'react'
+
+export default forwardRef(function Css3Icon(props, ref) {
   return (
     <svg
       viewBox="0 0 32 32"
@@ -8,6 +10,7 @@ function Css3Icon(props) {
       height="1em"
       width="1em"
       {...props}
+      ref={ref}
     >
       <path
         fill="currentColor"
@@ -15,6 +18,4 @@ function Css3Icon(props) {
       />
     </svg>
   );
-}
-
-export default Css3Icon;
+})

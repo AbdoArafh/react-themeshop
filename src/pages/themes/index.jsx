@@ -4,38 +4,6 @@ import Products from '../../components/products';
 import { Link } from 'react-router-dom'
 import Orbits from './orbits';
 
-class Vector2D {
-    constructor(x=0, y=0) {
-        this.x = x;
-        this.y = y;
-        this._heading = this.heading();
-        this._mag = this.getMag();
-    }
-    heading() {
-        return Math.acos(this.x);
-    }
-    setHeading(newHeading) {
-        this._heading = newHeading;
-    }
-    setMag(mag=1) {
-        this.normalize();
-        this.x *= mag;
-        this.y *= mag;
-    }
-    normalize() {
-        this._mag = this.getMag();
-        this.x /= this._mag;
-        this.y /= this._mag;
-    }
-    getMag() {
-        return Math.sqrt((this.x**2) + (this.y**2));
-    }
-    copy() {
-        return new Vector2D(this.x, this.y);
-    }
-}
-
-
 function BrowseButton({additionalClassNames=""}) {
     return (
         <Link to="/all-products" className={"bg-orange-700 max-w-fit text-white py-3 px-12 rounded-lg hover:brightness-110 active:brightness-75 sm:mx-auto" + " " + additionalClassNames}>
@@ -158,7 +126,7 @@ function JobTitle({position, company}) {
 
 function Rate() {
     return (
-        <div className="rate flex flex-col gap-10">
+        <div className="rate flex flex-col gap-10 snap-start">
             <div className="review">
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, maiores! "
             </div>
@@ -221,7 +189,7 @@ function LatestArticles() {
 export default function Themes({products}) {
     return (
         <div className="container relative mx-auto mt-14">
-            <section className="header mt-20 mb-52 mx-1 grid grid-rows-2 gap-[100px] lg:gird-rows-1 lg:gap-0 lg:grid-cols-2 sm:grid-cols-1 sm:grid-rows-2">
+            <section className="header mt-20 mx-1 pb-20 grid grid-rows-2 gap-[100px] lg:gird-rows-1 lg:gap-0 lg:grid-cols-2 lg:mx-0 lg:pb-0">
                 <div className="text flex flex-col gap-10 text-center lg:text-left sm:text-center">
                     <SeperatedHeaderTitle titles="Exquisitly <br> designed themes <br> for your next project" />
                     <div className="details flex flex-col">
@@ -250,13 +218,13 @@ export default function Themes({products}) {
                         exceptional SEO for businesses.
                     </p>
                 </div>
-                <div className="rates mt-20 grid lg:grid-cols-2 gap-10 overflow-scroll h-52">
-                    <Rate />
-                    <Rate />
-                    <Rate />
-                    <Rate />
-                    <Rate />
-                    <Rate />
+                <div className="rates mt-20 overflow-scroll h-52 flex flex-col gap-20 snap-y snap-mandatory">
+                    <div className="snap-start grid lg:grid-cols-2"><Rate />
+                    <Rate /></div>
+                    <div className="snap-start grid grid-cols-2"><Rate />
+                    <Rate /></div>
+                    <div className="snap-start grid grid-cols-2"><Rate />
+                    <Rate /></div>
                 </div>
             </section>
             <section className="collab my-20">
