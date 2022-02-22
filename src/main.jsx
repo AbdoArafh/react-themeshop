@@ -6,10 +6,10 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Navbar from './components/navbar'
 import Footer from './components/footer'
 import FAQs from './pages/FAQs/index'
-import ProductDetails from './pages/Product Details/index'
+import ProductDetails from './pages/Product_Details/index'
 import { ProductsArray as products } from './utils/readyProducts'
-import ShoppingCart from './pages/Shopping Cart'
-import AccountDashboard from './pages/Account Dashboard'
+import ShoppingCart from './pages/Shopping_Cart'
+import AccountDashboard from './pages/Account_Dashboard/index'
 import AllProducts from './pages/Products/index'
 
 ReactDOM.render(
