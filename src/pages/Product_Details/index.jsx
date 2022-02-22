@@ -172,7 +172,7 @@ export default function ProductDetails({products}) {
     const product = products.find(
         el => el.id === id
     );
-    if (!product) return <Error404 error={`404 Product not found <br> No product with id "${id}"`} />
+    if (!product) return <Error404>404 Product not found <br /> No product with id "{id}"</Error404>
     // calculated average of the reviews
     const avgRating = product.reviews.reduce((a, b) => a + b.rating, 0) / product.reviews.length;
     

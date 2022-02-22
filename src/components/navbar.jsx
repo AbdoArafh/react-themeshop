@@ -39,7 +39,7 @@ export default function Navbar() {
             </ul>
             <a href="#" className="pb-1 border-b border-black flex flex-row items-center gap-2">
                 Join Club!
-                <HeartIcon color="currentColor" className="text-red-800"/>
+                <HeartIcon color="currentColor" className="text-red-800" fill="rgb(153 27 27)" />
             </a>
             <NavLink to="/shopping-cart" className="">
                 <ShoppingCart />

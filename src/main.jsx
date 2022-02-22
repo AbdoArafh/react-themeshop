@@ -8,7 +8,7 @@ import Footer from './components/footer'
 import FAQs from './pages/FAQs/index'
 import ProductDetails from './pages/Product_Details/index'
 import { ProductsArray as products } from './utils/readyProducts'
-import ShoppingCart from './pages/Shopping_Cart'
+import ShoppingCart from './pages/Shopping_Cart/index'
 import AccountDashboard from './pages/Account_Dashboard/index'
 import AllProducts from './pages/Products/index'
 

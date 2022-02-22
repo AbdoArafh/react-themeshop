@@ -8,8 +8,8 @@ import ShopifyIcon from '../../components/icons/shopifyIcon'
 import VueIcon from '../../components/icons/vueIcon'
 import CSSIcon from '../../components/icons/css3icon'
 import HTMLIcon from '../../components/icons/html5icons'
+import JekyllIcon from '../../components/icons/jekyellIcon'
 import useAnimationFrame from '../../hooks/useAnimationFrame.js'
-import { GitBranch } from 'react-feather'
 
 function OrbitingIcon({data, width, height, direction}) {
 
@@ -35,7 +35,7 @@ function OrbitingIcon({data, width, height, direction}) {
         createElement(data.icon,
             {
                 key: data.placement,
-                className: "w-6 h-6 top-0 left-0 z-10 absolute",
+                className: "w-10 h-10 top-0 left-0 z-10 absolute text-[#4a4a4a]",
                 style: {transform: `translate(${getX(data.direction)}px, ${getY(data.direction)}px)`},
                 ref: iconRef,
             },
@@ -43,7 +43,7 @@ function OrbitingIcon({data, width, height, direction}) {
     )
 }
 
-function Orbit({icons, size, speed=1}) {
+function Orbit({icons, size, speed=0.001}) {
 
     const directions = {
         top: new Vec2D(0, -1),
@@ -85,7 +85,7 @@ function Orbit({icons, size, speed=1}) {
     , []);
 
     useAnimationFrame(deltaTime => {
-        setDirection(prevDirection => (prevDirection + (0.001 * deltaTime * speed)) % (Math.PI * 2));
+        setDirection(prevDirection => (prevDirection + (deltaTime * speed)) % (Math.PI * 2));
     });
     
     return (
@@ -114,14 +114,14 @@ export default function Orbits() {
                         right: BootstrapIcon
                     }}
                 size="sm"
-                speed={3} />
+                speed={0.002} />
             <Orbit icons={{
                         top: ReactIcon,
                         bottom: VueIcon
                     }}
             size="md"/>
             <Orbit icons={{
-                        left: GitBranch,
+                        left: JekyllIcon,
                         right: ShopifyIcon
                     }}
                 size="lg"/>

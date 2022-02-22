@@ -6,7 +6,7 @@ import Orbits from './orbits';
 
 function BrowseButton({additionalClassNames=""}) {
     return (
-        <Link to="/all-products" className={"bg-orange-700 max-w-fit text-white py-3 px-12 rounded-lg hover:brightness-110 active:brightness-75 sm:mx-auto" + " " + additionalClassNames}>
+        <Link to="/all-products" className={"bg-[#FF4800] max-w-fit text-white py-3 px-12 rounded-lg hover:brightness-110 active:brightness-75 sm:mx-auto" + " " + additionalClassNames}>
             Browse
         </Link>
     )
@@ -47,7 +47,7 @@ function Feature({title, description, Icon, blobColor}) {
 
 function WhyUs() {
     return (
-        <section className="why-us my-10 mx-auto">
+        <section className="why-us mx-auto">
             <div className="text-center">
                 <h1 className="font-medium text-4xl mb-5">
                     Why Choose Tortoiz Themes
@@ -89,21 +89,9 @@ function WhyUs() {
     )
 }
 
-function SeperatedHeaderTitle({titles}) {
-    return (
-        titles.split(" <br> ").map(
-            (title, i) => (
-                <h1 key={i.toString()} className="title text-5xl -my-5 font-medium">
-                    {title}
-                </h1>
-            )
-        )
-    )
-}
-
 function LatestProducts({products}) {
     return (
-        <section className="mt-20 latest-products flex flex-col gap-14">
+        <section className="latest-products flex flex-col gap-14">
             <h1 className="title text-3xl font-medium text-center">
                 Our Latest Products
             </h1>
@@ -188,16 +176,16 @@ function LatestArticles() {
 
 export default function Themes({products}) {
     return (
-        <div className="container relative mx-auto mt-14">
-            <section className="header mt-20 mx-1 pb-20 grid grid-rows-2 gap-[100px] lg:gird-rows-1 lg:gap-0 lg:grid-cols-2 lg:mx-0 lg:pb-0">
-                <div className="text flex flex-col gap-10 text-center lg:text-left sm:text-center">
-                    <SeperatedHeaderTitle titles="Exquisitly <br> designed themes <br> for your next project" />
+        <div className="container relative mx-auto mt-14 flex flex-col gap-56">
+            <section className="header mt-20 mx-1 grid grid-rows-2 gap-[100px] lg:gird-rows-1 lg:gap-0 lg:grid-cols-2">
+                <div className="text aspect-square flex flex-col gap-14 text-center lg:text-left sm:text-center">
+                    <h1 className="title text-5xl font-medium">
+                        Exquisitly <br /> designed themes <br /> for your next project
+                    </h1>
                     <div className="details flex flex-col">
                         <p>
                             Our products are hand crafted for production
-                        </p>
-                        <p>
-                            & can get you up and running in minutes
+                            <br />& can get you up and running in minutes
                         </p>
                     </div>
                     <BrowseButton additionalClassNames="mx-auto lg:ml-0" />
