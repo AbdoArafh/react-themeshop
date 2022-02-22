@@ -12,13 +12,13 @@
 - [x] change orbit size
 - [x] line animation on join club
 - [x] icon for jakle (jagle) static site generator
-- [ ] font-width font-height font-weight and colors again
-- [ ] border around why choose
-- [ ] the h1 line height
-- [ ] spacing, spacing and spacing the same spacing consistent spacing
-- [ ] read more button positioning
-- [ ] fill heart in join club
+- [x] account dashboard not working on netlify
+- [x] read more button positioning
+- [x] fill heart in join club
+- [x] border around why choose
+- [x] the h1 line height
+- [x] spacing, spacing and spacing the same spacing consistent spacing
+- [ ] font-height font-weight and colors again
 - [ ] hamburger menu
-- [ ] account dashboard not working on netlify
 - [ ] w3 validation
 reviews are called testemonials

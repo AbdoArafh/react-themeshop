@@ -3,7 +3,7 @@ import Product from './product'
 export default function Products({products}) {
     return (
         <>
-            <ul className="filters flex flex-row uppercase justify-around font-normal text-gray-800 select-none my-10">
+            <ul className="filters flex flex-row uppercase justify-around font-normal text-gray-800 select-none mx-auto lg:mx-36 my-10">
                 {["All", "website seo", "fb/gg ads", "email marketing", "web design", "wordpress"].map(
                     (filter, i) => (
                         <li key={i.toString()} className="hover:text-orange-500 cursor-pointer">

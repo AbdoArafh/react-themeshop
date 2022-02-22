@@ -14,26 +14,13 @@ function BrowseButton({additionalClassNames=""}) {
 
 function Feature({title, description, Icon, blobColor}) {
     return (
-        <div className="feature group pt-10 pb-14 border-b-4 border-b-transparent hover:border-orange-600 cursor-pointer relative after:block after:w-5 after:h-[2px] after:bg-gray-500 after:absolute after:bottom-5">
-            {title.split("<br>").map(
-                (t, i) => (
-                    <h1
-                        key={i.toString()}
-                        className="title text-2xl group-hover:text-orange-600 last-of-type:mb-5"
-                    >
-                        {t}
-                    </h1>
-                )
-            )}
-            {
-                description.split("<br>").map(
-                    (d, i) => (
-                        <p key={i.toString()} className="description text-sm last-of-type:mb-5">
-                            {d}    
-                        </p>
-                    )
-                )
-            }
+        <div className="feature group pt-10 pb-20 px-5 border-[1px] border-gray-500/50 border-r-0 last:border-r-[1px] hover:border-b-4 hover:border-b-orange-600 cursor-pointer relative after:block after:w-5 after:h-[2px] after:bg-gray-500 after:absolute after:bottom-5">
+            <h1 className="title text-2xl group-hover:text-orange-600 last-of-type:mb-5">
+                {title.replace(" <br> ", "\n")}
+            </h1>
+            <p className="description text-sm last-of-type:mb-5">
+                {description.replace(" <br> ", "\n")}
+            </p>
             <div className="relative">
                 <div className={`blob ${blobColor} w-10 aspect-square absolute -top-3 left-0 rounded-full`}></div>
                 {typeof Icon === "string"
@@ -49,7 +36,7 @@ function WhyUs() {
     return (
         <section className="why-us mx-auto">
             <div className="text-center">
-                <h1 className="font-medium text-4xl mb-5">
+                <h1 className="font-bold text-4xl mb-5">
                     Why Choose Tortoiz Themes
                 </h1>
                 <p>
@@ -59,7 +46,7 @@ function WhyUs() {
                     exceptional SEO for businesses.
                 </p>
             </div>
-            <div className="features grid lg:grid-cols-4 sm:grid-cols-2 justify-center gap-10 px-5 mt-10">
+            <div className="features grid lg:grid-cols-4 sm:grid-cols-2 justify-center px-5 mt-10 border-collapse">
                 <Feature
                     title="Competitor <br> Research"
                     description="Help business with their brading <br> identity better"
@@ -91,8 +78,8 @@ function WhyUs() {
 
 function LatestProducts({products}) {
     return (
-        <section className="latest-products flex flex-col gap-14">
-            <h1 className="title text-3xl font-medium text-center">
+        <section className="latest-products">
+            <h1 className="title text-3xl font-bold text-center">
                 Our Latest Products
             </h1>
             {/* TODO sort by date and get only certain amount */}
@@ -121,7 +108,7 @@ function Rate() {
             <div className="person flex flex-row h-16 gap-5">
                 <img src="https://via.placeholder.com/100" alt="person's profile picture" className="rounded-full" />
                 <div className="info my-auto">
-                    <div className="name font-medium">
+                    <div className="name font-bold">
                         John Doe
                     </div>
                     <JobTitle position="Director At" company="Company"/>
@@ -162,7 +149,7 @@ function ArticleComponent() {
 function LatestArticles() {
     return (
         <section className="latest-articles">
-            <h1 className="title text-4xl font-medium text-center mb-14">
+            <h1 className="title text-4xl font-bold text-center mb-14">
                 Latest Articles
             </h1>
             <div className="articles grid gap-10 lg:grid-cols-3 sm:grid-cols-2">
@@ -176,10 +163,10 @@ function LatestArticles() {
 
 export default function Themes({products}) {
     return (
-        <div className="container relative mx-auto mt-14 flex flex-col gap-56">
+        <div className="container relative mx-auto mt-14 flex flex-col gap-56 mb-56">
             <section className="header mt-20 mx-1 grid grid-rows-2 gap-[100px] lg:gird-rows-1 lg:gap-0 lg:grid-cols-2">
                 <div className="text aspect-square flex flex-col gap-14 text-center lg:text-left sm:text-center">
-                    <h1 className="title text-5xl font-medium">
+                    <h1 className="title text-5xl leading-[1.15] font-bold">
                         Exquisitly <br /> designed themes <br /> for your next project
                     </h1>
                     <div className="details flex flex-col">
@@ -194,8 +181,8 @@ export default function Themes({products}) {
             </section>
             <WhyUs />
             <LatestProducts products={products} />
-            <section className="why-the-love my-20"> 
-                <h1 className="title text-center text-4xl font-medium">
+            <section className="why-the-love"> 
+                <h1 className="title text-center text-4xl font-bold">
                     Why Clients Love Us
                 </h1>
                 <div className="description text-center my-6">
@@ -206,7 +193,7 @@ export default function Themes({products}) {
                         exceptional SEO for businesses.
                     </p>
                 </div>
-                <div className="rates mt-20 overflow-scroll h-52 flex flex-col gap-20 snap-y snap-mandatory">
+                <div className="rates overflow-scroll mt-20 h-52 flex flex-col gap-20 snap-y snap-mandatory">
                     <div className="snap-start grid lg:grid-cols-2"><Rate />
                     <Rate /></div>
                     <div className="snap-start grid grid-cols-2"><Rate />
@@ -215,7 +202,7 @@ export default function Themes({products}) {
                     <Rate /></div>
                 </div>
             </section>
-            <section className="collab my-20">
+            <section className="collab">
                 <marquee behavior="scroll" direction="left" scrolldelay="60">
                     {Array.from(Array(8)).map(
                         (_, i) => <img key={i.toString()} src="https://via.placeholder.com/500x100" alt="a company logo" className="inline-block mx-10" />
@@ -223,8 +210,8 @@ export default function Themes({products}) {
                 </marquee>
             </section>
             <LatestArticles />
-            <div className="subscription my-20 py-20 bg-[#003146] text-center text-white">
-                <div className="title text-3xl font-semibold text-orange-700 mb-2">
+            <div className="subscription py-20 bg-[#003146] text-center text-white">
+                <div className="title text-4xl font-bold text-orange-600 mb-3 ">
                     Unlimited Access Pass
                 </div>
                 <div className="description text-sm">
@@ -238,7 +225,7 @@ export default function Themes({products}) {
                 <div className="price mt-10 mb-20 text-5xl font-bold bg-orange-600 w-fit p-5 mx-auto">
                     $99<sup>/yr</sup>
                 </div>
-                <a href="#" className="subscribe text-black mx-auto py-3 px-20 bg-[#5DA92F] text-2xl font-medium rounded-xl uppercase hover:brightness-110">
+                <a href="#" className="subscribe text-black mx-auto py-3 px-20 bg-[#5DA92F] text-2xl font-bold rounded-xl uppercase hover:brightness-110">
                     subscribe
                 </a>
                 <div className="notice mt-8">
