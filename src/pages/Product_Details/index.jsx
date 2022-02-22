@@ -6,7 +6,7 @@ import {
 import { useParams } from 'react-router-dom'
 import Error404 from '../../components/404';
 import StarRating from '../../components/starRating';
-import React, { useState } from 'react'
+import { useState, createElement } from 'react'
 import { AddToCart } from '../../utils/cart'
 import { useNavigate } from 'react-router-dom'
 
@@ -81,7 +81,7 @@ function CollapsableText({children}) {
 function DetailsComponent({details}) {
     // todo make it so it will be more flexable and work with only one element of the data
     return (
-        <div className="product-details flex flex-col gap-10">
+        <div className="product-details flex flex-col gap-20">
             {details.map(
                 (detail, i) => (
                     // todo delete this -----> <div key={i.toString()} className={`grid ${detail.src ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
@@ -285,7 +285,7 @@ export default function ProductDetails({products}) {
                             )
                         )}
                     </div>
-                    {React.createElement(detailsComponents[chosenFilter], {[chosenFilter]: product[chosenFilter]}, null)}
+                    {createElement(detailsComponents[chosenFilter], {[chosenFilter]: product[chosenFilter]}, null)}
                 </main>
             </section>
         </div>

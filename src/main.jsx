@@ -5,12 +5,12 @@ import Themes from './pages/themes'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Navbar from './components/navbar'
 import Footer from './components/footer'
-import FAQs from './pages/FAQs/index'
-import ProductDetails from './pages/Product_Details/index'
+import FAQs from './pages/FAQs'
+import ProductDetails from './pages/Product_Details'
 import { ProductsArray as products } from './utils/readyProducts'
-import ShoppingCart from './pages/Shopping_Cart/index'
-import AccountDashboard from './pages/Account_Dashboard/index'
-import AllProducts from './pages/Products/index'
+import ShoppingCart from './pages/Shopping_Cart'
+import AccountDashboard from './pages/Account_Dashboard'
+import AllProducts from './pages/Products'
 
 ReactDOM.render(
   <React.StrictMode>
