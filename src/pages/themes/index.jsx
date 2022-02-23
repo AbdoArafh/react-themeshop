@@ -3,6 +3,7 @@ import { Eye, MessageSquare } from "react-feather";
 import Products from '../../components/products';
 import { Link } from 'react-router-dom'
 import Orbits from './orbits';
+import VerticalCarousel from '../../components/verticalCarousel';
 
 function BrowseButton({additionalClassNames=""}) {
     return (
@@ -193,13 +194,15 @@ export default function Themes({products}) {
                         exceptional SEO for businesses.
                     </p>
                 </div>
-                <div className="rates overflow-scroll mt-20 h-52 flex flex-col gap-20 snap-y snap-mandatory">
-                    <div className="snap-start grid lg:grid-cols-2"><Rate />
-                    <Rate /></div>
-                    <div className="snap-start grid grid-cols-2"><Rate />
-                    <Rate /></div>
-                    <div className="snap-start grid grid-cols-2"><Rate />
-                    <Rate /></div>
+                <div className="testimonials mt-10">
+                    <VerticalCarousel>
+                        <div className="snap-start grid lg:grid-cols-2"><Rate />
+                        <Rate /></div>
+                        <div className="snap-start grid grid-cols-2"><Rate />
+                        <Rate /></div>
+                        <div className="snap-start grid grid-cols-2"><Rate />
+                        <Rate /></div>
+                    </VerticalCarousel>
                 </div>
             </section>
             <section className="collab">

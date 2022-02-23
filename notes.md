@@ -23,4 +23,5 @@
 - [x] line animation on join club
 - [x] line animation for features
 - [x] w3 validation
-- [ ] font-height font-weight and colors again
+- [x] font-height font-weight and colors again
+- [x] vertical carousel for testemonials
