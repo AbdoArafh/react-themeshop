@@ -9,17 +9,25 @@ function Logo() {
     return <NavLink to="/" className="h-[100%] relative"><img src={logoImg} alt="logo" className="h-[100%]"/></NavLink>
 }
 
+export function NavLinkItem({path, children}) {
+    return (
+        <NavLink
+            className= {
+                    ({isActive}) => `${isActive ? "text-orange-500 " : ""}uppercase hover:text-orange-500`
+                }
+            to={path}
+        >
+            {children}
+        </NavLink>
+    )
+}
+
 function NavItem({path, title}) {
     return (
         <li className="nav-item relative px-5 after:block after:w-1 after:aspect-square after:absolute after:bg-gray-400 after:rounded-full after:-right-0 after:top-[50%] after:-translate-y-[50%] after:translate-x-[50%] last:after:hidden">
-            <NavLink
-                className= {
-                        ({isActive}) => `${isActive ? "text-orange-500 " : ""}uppercase hover:text-orange-500`
-                    }
-                to={path}
-            >
+            <NavLinkItem path={path}>
                 {title}
-            </NavLink>
+            </NavLinkItem>
         </li>
     )
 }
