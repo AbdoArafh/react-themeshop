@@ -18,7 +18,7 @@
 - [x] border around why choose
 - [x] the h1 line height
 - [x] spacing, spacing and spacing the same spacing consistent spacing
+- [x] hamburger menu
 - [ ] font-height font-weight and colors again
-- [ ] hamburger menu
 - [ ] w3 validation
 reviews are called testemonials
