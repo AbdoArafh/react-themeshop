@@ -29,13 +29,13 @@ const BunchOfLinks = ({title, links}) => (
 
 function NewsLetter() {
     return (
-        <div className="news-letter mt-10">
+        <div className="news-letter mt-10 flex flex-col">
             <h2>Newsletter</h2>
             <p>
                 Subscribe to our newsletter and we will inform you about
                 newest projects and promotions
             </p>
-            <form className="flex flex-row">
+            <form className="flex flex-row mx-auto lg:mx-0">
                 <input className="py-4 pl-4 outline-none" type="email" name="email" id="email" autoComplete="off" placeholder="Email Address" />
                 <button type="submit">
                     <Mail />
@@ -64,8 +64,8 @@ const LanguageOption = ({lang}) => (
 
 function FooterInfo() {
     return (
-        <div className="site-info">
-            <div className="logo h-14 mb-8">
+        <div className="site-info flex flex-col">
+            <div className="logo h-14 mb-8 mx-auto">
                 <img src={Logo} alt="site logo" className="h-[100%]"/>
             </div>
             <div className="info">
@@ -82,7 +82,7 @@ function FooterInfo() {
 
 function UpperPortion() {
     return (
-        <div className="upper-portion lg:grid-footer justify-center">
+        <div className="upper-portion grid lg:grid-footer justify-center text-center lg:text-left">
             <FooterInfo />
             <BunchOfLinks title="Company" links={
                 ["About Us",
@@ -120,8 +120,8 @@ function LanguageSelect({langs}) {
 
 function LowerPortion() {
     return (
-        <div className="lower-portion grid md:grid-cols-3 mt-20">
-            <div className="social-icons flex flex-row gap-3 justify-start text-gray-400">
+        <div className="lower-portion grid gap-4 md:grid-cols-3 md:gap-0 mt-20">
+            <div className="social-icons flex flex-row mx-auto gap-3 justify-start text-gray-400">
                 <SocialIcon Icon={Twitter}/>
                 <SocialIcon Icon={GitHub}/>
                 <SocialIcon Icon={Facebook}/>
