@@ -1,4 +1,5 @@
-# Notes
+### Notes
+- reviews are called testemonials
 
 ### TODO
 - [x] the rotating icons
@@ -10,7 +11,6 @@
 - [x] change gray color to #999
 - [x] change orange color
 - [x] change orbit size
-- [x] line animation on join club
 - [x] icon for jakle (jagle) static site generator
 - [x] account dashboard not working on netlify
 - [x] read more button positioning
@@ -19,6 +19,8 @@
 - [x] the h1 line height
 - [x] spacing, spacing and spacing the same spacing consistent spacing
 - [x] hamburger menu
+- [x] make actual blobs
+- [x] line animation on join club
+- [x] line animation for features
+- [x] w3 validation
 - [ ] font-height font-weight and colors again
-- [ ] w3 validation
-reviews are called testemonials

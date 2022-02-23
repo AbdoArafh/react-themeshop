@@ -54,7 +54,7 @@ export default function Navbar() {
                 <NavItem path="/faqs" title="FAQs" />
                 <NavItem path="/contact" title="Contact"/>
             </ul>
-            <a href="#" className="pb-1 border-b border-black flex flex-row items-center gap-2">
+            <a href="#" className="line-animation line-animation-red-800 pb-1 flex flex-row items-center gap-2">
                 Join Club!
                 <HeartIcon color="currentColor" className="text-red-800" fill="rgb(153 27 27)" />
             </a>

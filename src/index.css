@@ -23,7 +23,27 @@ body {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr 2fr;
     }
+    .blob {
+        border-radius: 59% 41% 64% 36% / 42% 53% 47% 58%;
+    }
+    .line-animation-orange-600 {
+        @apply from-orange-600 to-orange-600;
+    }
+    .line-animation-red-800 {
+        @apply from-red-800 to-red-800;
+    }
+    .line-animation {
+        @apply bg-gradient-to-r;
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        background-size: 0 2px;
+        transition: background-size 0.5s ease;
+    }
+    .line-animation:hover {
+        background-size: 100% 2px;
+    }
 }
+
 
 .container  {
     @apply max-w-[1024px] w-[100%];

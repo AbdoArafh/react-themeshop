@@ -1,7 +1,6 @@
 import { NavLinkItem } from "./navbar"
 
 export default function HamburgerMenu({isOpen}) {
-    console.log(isOpen);
     return (
         <div className={"fixed top-20 right-0 h-[100vh] transition-transform z-10 pr-20 pl-4 bg-white shadow-2xl shadow-slate-400" + (isOpen ? " translate-x-0" : " translate-x-[100%]")}>
             <ul className="flex flex-col gap-5 uppercase font-bold">
