@@ -33,7 +33,7 @@ function BillingAdress({address}) {
 export default function BillingAdresses() {
   const addresses = billingAdresses;
   return (
-    <div className="billing-adresses">
+    <div className="billing-adresses text-center lg:text-left">
       <h1 className="text-2xl my-10">Billing Addresses</h1>
       <p>The following addresses will be used on the checkout page by default</p>
       {addresses.map(

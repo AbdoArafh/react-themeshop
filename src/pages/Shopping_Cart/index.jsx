@@ -16,6 +16,20 @@ import {
   calculateTotal,
   getPrice } from "../../utils/cart"
 
+function TableHead({head}) {
+  let title, className;
+  if (typeof head !== "string") {
+    title = head.title;
+    className = head.className;
+  } else {
+    title = head;
+    className= "";
+  }
+  return (
+    <th className={className}>{title}</th>
+  )
+}
+
 export default function ShoppingCart() {
   const [orders, setOrders] = useState(getOrders());
   const [total, setTotal] = useState(0);
@@ -58,8 +72,8 @@ export default function ShoppingCart() {
         <table className="w-[100%]">
           <thead className="shadow-xl h-16">
             <tr className="text-gray-500 font-medium text-left">
-              {["", "Product Name", "Price", "Quantity", "Total", ""].map(
-                (head, i) => <th key={i.toString()}>{head}</th>
+              {[{title: "", className: "hidden lg:table-cell"}, "Product Name", "Price", "Quantity", "Total", ""].map(
+                (head, i) => <TableHead key={i.toString()} head={head} />
               )}
             </tr>
           </thead>
@@ -69,7 +83,7 @@ export default function ShoppingCart() {
                 const order = orders[id];
                 return (
                   <tr key={i.toString()}>
-                    <td className="w-32 py-10">
+                    <td className="w-32 py-10 hidden lg:block">
                       <img src={order.src} alt={order.name} className="pr-5" />
                     </td>
                     <td>

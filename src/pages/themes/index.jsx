@@ -15,7 +15,7 @@ function BrowseButton({additionalClassNames=""}) {
 
 function Feature({title, description, Icon, blobColor}) {
     return (
-        <div className="feature line-animation line-animation-orange-600 group pt-10 pb-20 px-5 border-[1px] border-gray-500/50 border-r-0 last:border-r-[1px] cursor-pointer relative after:block after:w-5 after:h-[2px] after:bg-gray-500 after:absolute after:bottom-5">
+        <div className="feature line-animation line-animation-orange-600 group pt-10 pb-20 px-5 border-[1px] border-gray-500/50 cursor-pointer relative after:block after:w-5 after:h-[2px] after:bg-gray-500 after:absolute after:bottom-5">
             <h1 className="title text-2xl group-hover:text-orange-600 last-of-type:mb-5">
                 {title.replace(" <br> ", "\n")}
             </h1>

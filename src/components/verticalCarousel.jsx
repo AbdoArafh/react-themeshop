@@ -29,7 +29,6 @@ export default function VerticalCarousel({children, duration=1}) {
         setOffset(o => o <= 0 ? children.length-1 : o-1);
     }
     return (
-        // <div>{children}</div>
         <div className="vertical-carousel flex flex-row gap-4">
             <div
                 className="slides relative overflow-y-hidden w-[90%]"

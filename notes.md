@@ -2,8 +2,16 @@
 - reviews are called testemonials
 
 ### TODO
+- [ ] responive design
+  - [x] themes page
+  - [x] faq
+  - [ ] account dashboard
+    - [ ] orders table
+    - [x] rest of page
+  - [ ] shopping cart
+    - [ ] orders table
+    - [x] rest of page
 - [x] the rotating icons
-- [x] responive design
 - [x] add the account page (design only)
 - [x] don't add copouns or taxes just checkout
 - [x] the all products page with tags

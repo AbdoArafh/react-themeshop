@@ -25,7 +25,7 @@ export default function AccountDashboard() {
         <div className="account-dashboard container mx-auto my-20">
             <div className="text-center uppercase text-gray-500">Your Account Details</div>
             <h1 className="text-center font-semibold text-5xl my-16">My Account</h1>
-            <ul className="navigation flex flex-row justify-center gap-10 mt-32 mb-10">
+            <ul className="navigation flex flex-row justify-center gap-2 md:gap-10 mt-32 mb-10">
                 {Object.keys(sections).map(
                     (sectionName, i) => (
                         <li

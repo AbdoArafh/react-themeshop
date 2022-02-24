@@ -13,7 +13,7 @@ const accountDetails = {
 
 export default function Dashboard({navigate}) {
   return (
-    <div className="dashboard flex flex-row gap-20">
+    <div className="dashboard flex flex-col lg:flex-row gap-20">
         <Profile navigate={navigate} accountDetails={accountDetails}/>
         <div className="content w-[100%]">
           <Orders navigate={navigate} />

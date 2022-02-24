@@ -106,7 +106,7 @@ function Orbit({icons, size, speed=0.001}) {
 
 export default function Orbits() {
     return (
-		<div className="orbits relative">
+		<div className="orbits relative scale-75 lg:scale-100">
             <Orbit icons={{
                         top: HTMLIcon,
                         bottom: CSSIcon,
