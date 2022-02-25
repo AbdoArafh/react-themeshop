@@ -79,12 +79,10 @@ function CollapsableText({children}) {
 }
 
 function DetailsComponent({details}) {
-    // todo make it so it will be more flexable and work with only one element of the data
     return (
         <div className="product-details flex flex-col gap-20">
             {details.map(
                 (detail, i) => (
-                    // todo delete this -----> <div key={i.toString()} className={`grid ${detail.src ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
                     <div key={i.toString()} className={`flex gap-5 ${i & 1 ? "flex-row" : "flex-row-reverse"}`}>
                         {detail.src && <img src={detail.src} alt={detail.title} className="mx-auto w-[50%]" />}
                         <div className="text flex flex-col gap-5 w-[50%]">
